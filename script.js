@@ -17,3 +17,37 @@ for(let y=0; y<canvas.width; y+=10){
 
 context.stroke();
 ////////////////////////////////////////
+
+context.beginPath();
+context.strokeStyle = 'red'; // Set a visible color
+context.fillStyle="green"
+context.lineWidth = 5;      // Set a thicker line
+context.moveTo(0, 100);
+context.lineTo(100, 200);
+context.lineTo(10, 400);
+context.stroke();
+context.fill()
+context.restore()
+
+
+// context.beginPath()
+// context.strokeStyle="yellow"
+// context.fillStyle="purple"
+// context.lineWidth=1
+// context.moveTo(100, 200);
+// context.lineTo(400, 50);
+// context.lineTo(400, 400);
+// context.stroke()
+// context.fill()
+// context.closePath()
+
+context.beginPath()
+context.strokeStyle="yellow"
+context.fillStyle="purple"
+context.lineWidth=1
+context.moveTo(100, 200);
+context.quadraticCurveTo(400, 50,400, 400);
+context.quadraticCurveTo(500, 500,700,200);
+context.stroke()
+// context.fill()
+context.closePath()
