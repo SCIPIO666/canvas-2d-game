@@ -2,6 +2,9 @@
 const canvas=document.getElementById("asteroids");
 const context= canvas.getContext("2d");
 
+const stroke="#00FF00";
+const fill="#009900"; 
+
 function drawGrid(ctx, minorSize, majorSize, stroke, fill) {
     const minor = minorSize || 10;
     const major = majorSize || minor * 5;
@@ -9,6 +12,7 @@ function drawGrid(ctx, minorSize, majorSize, stroke, fill) {
     const strokeStyle = stroke || "#00FF00";
     const fillStyle = fill || "#009900"; 
     
+ 
     ctx.save();
     ctx.strokeStyle = strokeStyle;
     ctx.fillStyle = fillStyle;
@@ -50,27 +54,36 @@ drawGrid(context, 10, 50, "#00FF00", "#009900");
 
 //draw pacman
 
-function drawCircle(context,centrePoint,radius,beginAngle,EndAngle,stroke, fill){
+function drawCircle(context,centrePointX,centrePointY,radius,beginAngle,EndAngle,stroke, fill){
 
     const strokeStyle = stroke || "#00FF00";
-    const fillStyle = fill || "#009900"; 
+    const fillStyle = fill || "#009900";
 
-    const midpoint= centrePoint || "100,150";
-    const circleRadius= radius || 50;
-    const arcStartPoint=beginAngle ||  0;
-    const arcEndPoint=EndAngle || 2;
+    const x = centrePointX || 100;
+    const y = centrePointY || 100;
+    const circleRadius = radius || 30;
+    const startAngle = (beginAngle !== undefined) ? beginAngle * Math.PI : 0;
+    const endAngle = (EndAngle !== undefined) ? EndAngle * Math.PI : 2 * Math.PI;
 
-context.beginPath()
-context.strokeStyle=strokeStyle;
-context.fillStyle=fillStyle;
-context.moveTo(midpoint);
-context.arc(`${midpoint,circleRadius,Math.PI*arcStartPoint,Math.PI*arcEndPoint}`);
-context.lineTo(midpoint);
-context.stroke()
-//context.fill();
+
+    context.save();
+
+    context.beginPath()
+    context.strokeStyle=strokeStyle;
+    context.fillStyle=fillStyle;
+
+    context.moveTo(x,y);
+    context.arc(x,y,circleRadius,startAngle, endAngle);
+    context.lineTo(x,y);
+    context.stroke()
+    context.fill();
+    context.restore();
 
 
 }
 
+// Example call to draw a Pac-Man shape
+drawCircle(context, 300, 300, 30, 0.25, 1.75, "blue", "yellow"); 
 
-drawCircle(context,"100,100",30,0.6,1.2,"blue","red")
+// Example call for a full red circle
+drawCircle(context, 100, 100, 30, 0, 2, "black", "red");
