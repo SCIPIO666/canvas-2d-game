@@ -87,3 +87,7 @@ drawCircle(context, 300, 300, 30, 0.25, 1.75, "blue", "yellow");
 
 // Example call for a full red circle
 drawCircle(context, 100, 100, 30, 0, 2, "black", "red");
+
+// drawCircle(context, 400, 200, 50,Math.random() ,Math.random(),"black", "red");
+// drawCircle(context, 400, 400, 20,Math.random() ,Math.random(),"black", "red");
+// drawCircle(context, 400, 600, 30,Math.random() ,Math.random(),"black", "red");
